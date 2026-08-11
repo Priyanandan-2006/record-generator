@@ -1,0 +1,36 @@
+
+> record-generator-backend@1.0.0 dev
+> node --watch src/server.js
+
+Restarting 'src/server.js'
+Backend listening on http://localhost:5000
+Restarting 'src/server.js'
+Restarting 'src/server.js'
+Backend listening on http://localhost:5000
+Restarting 'src/server.js'
+Restarting 'src/server.js'
+Restarting 'src/server.js'
+Restarting 'src/server.js'
+Backend listening on http://localhost:5000
+Restarting 'src/server.js'
+Backend listening on http://localhost:5000
+Restarting 'src/server.js'
+Restarting 'src/server.js'
+Restarting 'src/server.js'
+Backend listening on http://localhost:5000
+Restarting 'src/server.js'
+Backend listening on http://localhost:5000
+Restarting 'src/server.js'
+Backend listening on http://localhost:5000
+Restarting 'src/server.js'
+Restarting 'src/server.js'
+Backend listening on http://localhost:5000
+Restarting 'src/server.js'
+Backend listening on http://localhost:5000
+Restarting 'src/server.js'
+Backend listening on http://localhost:5000
+Restarting 'src/server.js'
+Backend listening on http://localhost:5000
+Restarting 'src/server.js'
+Restarting 'src/server.js'
+Backend listening on http://localhost:5000

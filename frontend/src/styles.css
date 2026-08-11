@@ -1,0 +1,254 @@
+:root {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #10233f;
+  background:
+    radial-gradient(circle at top, rgba(78, 121, 167, 0.22), transparent 34%),
+    linear-gradient(135deg, #f4f7fb 0%, #dbe7f4 100%);
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+.app-shell {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 20px 56px;
+}
+
+.hero {
+  margin-bottom: 28px;
+}
+
+.hero-copy {
+  max-width: 720px;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #456b93;
+  font-weight: 700;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.3rem, 5vw, 4.2rem);
+  line-height: 1.02;
+}
+
+.hero-text {
+  margin-top: 16px;
+  max-width: 620px;
+  color: #39516f;
+  font-size: 1.02rem;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.panel {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(124, 152, 183, 0.25);
+  border-radius: 24px;
+  box-shadow: 0 18px 50px rgba(37, 61, 92, 0.12);
+  backdrop-filter: blur(12px);
+}
+
+.form-panel,
+.preview-panel {
+  padding: 24px;
+}
+
+.panel-heading {
+  margin-bottom: 20px;
+}
+
+.panel-heading h2 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.panel-heading p {
+  margin: 6px 0 0;
+  color: #5c7089;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field span {
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  border: 1px solid #c7d4e2;
+  border-radius: 16px;
+  padding: 13px 14px;
+  background: #fbfdff;
+  color: #10233f;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-color: #4b79a7;
+  box-shadow: 0 0 0 4px rgba(75, 121, 167, 0.12);
+}
+
+.field textarea {
+  resize: vertical;
+}
+
+.code-field,
+.preview-code {
+  font-family: "Courier New", Courier, monospace;
+  white-space: pre-wrap;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.primary-button,
+.secondary-button {
+  border: none;
+  border-radius: 999px;
+  padding: 12px 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.primary-button {
+  background: linear-gradient(135deg, #1d4f80 0%, #4b79a7 100%);
+  color: #ffffff;
+}
+
+.primary-button:disabled {
+  opacity: 0.75;
+  cursor: progress;
+}
+
+.secondary-button {
+  background: #e7eef6;
+  color: #224567;
+}
+
+.error-banner {
+  margin: 16px 0 0;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: #fdeceb;
+  color: #8a2e2a;
+  border: 1px solid #f3c2bf;
+}
+
+.preview-sheet {
+  width: 100%;
+  min-height: 1122px;
+  background: #ffffff;
+  border: 1px solid #d9e2ec;
+  border-radius: 18px;
+  padding: 38px 34px;
+  box-shadow: inset 0 0 0 1px rgba(74, 111, 148, 0.05);
+}
+
+.preview-topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 18px;
+  border-bottom: 2px solid #d7e0ea;
+}
+
+.preview-label {
+  margin: 0 0 6px;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #607792;
+  font-weight: 700;
+}
+
+.preview-title-block {
+  padding: 24px 0 10px;
+}
+
+.preview-title-block h3 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.preview-section {
+  padding-top: 18px;
+}
+
+.preview-section p:last-child {
+  margin: 0;
+  color: #24384f;
+}
+
+@media (max-width: 1100px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .app-shell {
+    padding: 24px 14px 40px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .preview-sheet {
+    min-height: auto;
+    padding: 24px 20px;
+  }
+
+  .preview-topline {
+    flex-direction: column;
+  }
+}
