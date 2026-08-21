@@ -1,10 +1,18 @@
 import PDFDocument from "pdfkit";
+import { formatDisplayDate, normalizeText } from "../utils/recordData.js";
 
 const PAGE_MARGIN = 56;
-const CONTENT_WIDTH = 595.28 - PAGE_MARGIN * 2;
+const PAGE_WIDTH = 595.28; // A4 width in PDF points
+const CONTENT_WIDTH = PAGE_WIDTH - PAGE_MARGIN * 2;
+const BOTTOM_LIMIT_OFFSET = 56;
 
-function normalizeText(value) {
-  return String(value || "").trim();
+function hasSpace(doc, height) {
+  return doc.y + height <= doc.page.height - BOTTOM_LIMIT_OFFSET;
+}
+
+function addNewPage(doc) {
+  doc.addPage();
+  doc.y = PAGE_MARGIN;
 }
 
 function drawHeader(doc, data) {
@@ -17,103 +25,239 @@ function drawHeader(doc, data) {
       align: "center"
     });
 
+  doc.moveDown(0.8);
+
+  const lineY = doc.y;
+
   doc
-    .moveDown(0.8)
-    .strokeColor("#b5c7d9")
+    .strokeColor("#cdb89d")
     .lineWidth(1)
-    .moveTo(PAGE_MARGIN, doc.y)
-    .lineTo(PAGE_MARGIN + CONTENT_WIDTH, doc.y)
+    .moveTo(PAGE_MARGIN, lineY)
+    .lineTo(PAGE_MARGIN + CONTENT_WIDTH, lineY)
     .stroke();
 
-  doc.moveDown(0.8);
+  doc.y = lineY + 16;
+
   drawMetaTable(doc, data);
 }
 
 function drawMetaTable(doc, data) {
-  const top = doc.y;
-  const rowHeight = 32;
   const firstColumnWidth = CONTENT_WIDTH * 0.5;
   const secondColumnWidth = CONTENT_WIDTH - firstColumnWidth;
 
-  doc.rect(PAGE_MARGIN, top, CONTENT_WIDTH, rowHeight * 2).stroke("#b5c7d9");
-  doc
-    .moveTo(PAGE_MARGIN + firstColumnWidth, top)
-    .lineTo(PAGE_MARGIN + firstColumnWidth, top + rowHeight * 2)
-    .stroke("#b5c7d9");
-  doc
-    .moveTo(PAGE_MARGIN, top + rowHeight)
-    .lineTo(PAGE_MARGIN + CONTENT_WIDTH, top + rowHeight)
-    .stroke("#b5c7d9");
+  const dateHeight = getMetaHeight(
+    doc,
+    "Date",
+    formatDisplayDate(data.date),
+    firstColumnWidth - 24
+  );
 
-  writeMetaCell(doc, "Date", data.date, PAGE_MARGIN + 12, top + 8, firstColumnWidth - 24);
+  const experimentHeight = getMetaHeight(
+    doc,
+    "Experiment Number",
+    data.experimentNumber,
+    secondColumnWidth - 24
+  );
+
+  const firstRowHeight = Math.max(dateHeight, experimentHeight, 42);
+
+  const titleHeight = getMetaHeight(doc, "Title", data.title, CONTENT_WIDTH - 24);
+  const secondRowHeight = Math.max(titleHeight, 42);
+  const totalHeight = firstRowHeight + secondRowHeight;
+
+  if (!hasSpace(doc, totalHeight + 20)) {
+    addNewPage(doc);
+  }
+
+  const tableTop = doc.y;
+
+  doc.rect(PAGE_MARGIN, tableTop, CONTENT_WIDTH, totalHeight).stroke("#cdb89d");
+
+  doc
+    .moveTo(PAGE_MARGIN + firstColumnWidth, tableTop)
+    .lineTo(PAGE_MARGIN + firstColumnWidth, tableTop + firstRowHeight)
+    .stroke("#cdb89d");
+
+  doc
+    .moveTo(PAGE_MARGIN, tableTop + firstRowHeight)
+    .lineTo(PAGE_MARGIN + CONTENT_WIDTH, tableTop + firstRowHeight)
+    .stroke("#cdb89d");
+
+  writeMetaCell(
+    doc,
+    "Date",
+    formatDisplayDate(data.date),
+    PAGE_MARGIN + 12,
+    tableTop + 8,
+    firstColumnWidth - 24
+  );
+
   writeMetaCell(
     doc,
     "Experiment Number",
     data.experimentNumber,
     PAGE_MARGIN + firstColumnWidth + 12,
-    top + 8,
+    tableTop + 8,
     secondColumnWidth - 24
   );
-  writeMetaCell(doc, "Title", data.title, PAGE_MARGIN + 12, top + rowHeight + 8, CONTENT_WIDTH - 24);
 
-  doc.y = top + rowHeight * 2 + 18;
+  writeMetaCell(
+    doc,
+    "Title",
+    data.title,
+    PAGE_MARGIN + 12,
+    tableTop + firstRowHeight + 8,
+    CONTENT_WIDTH - 24
+  );
+
+  doc.y = tableTop + totalHeight + 18;
+}
+
+function getMetaHeight(doc, label, value, width) {
+  doc.font("Helvetica-Bold").fontSize(10);
+
+  const labelHeight = doc.heightOfString(label, {
+    width
+  });
+
+  doc.font("Helvetica").fontSize(11);
+
+  const valueHeight = doc.heightOfString(normalizeText(value) || "N/A", {
+    width,
+    lineGap: 2
+  });
+
+  return labelHeight + valueHeight + 26;
 }
 
 function writeMetaCell(doc, label, value, x, y, width) {
   doc
     .font("Helvetica-Bold")
     .fontSize(10)
-    .fillColor("#52677e")
-    .text(label, x, y, { width });
+    .fillColor("#6f5b43")
+    .text(label, x, y, {
+      width
+    });
 
   doc
     .font("Helvetica")
     .fontSize(11)
     .fillColor("#111827")
-    .text(normalizeText(value) || "N/A", x, y + 12, { width });
+    .text(normalizeText(value) || "N/A", x, y + 14, {
+      width,
+      lineGap: 2
+    });
 }
 
-function ensureSectionSpace(doc, estimatedHeight) {
-  if (doc.y + estimatedHeight <= doc.page.height - PAGE_MARGIN) {
-    return;
+function drawSectionHeading(doc, title) {
+  const headingHeight = 34;
+
+  if (!hasSpace(doc, headingHeight)) {
+    addNewPage(doc);
   }
 
-  doc.addPage();
-}
-
-function drawSection(doc, title, value, options = {}) {
-  const content = normalizeText(value) || "N/A";
-  const estimatedHeight = doc.heightOfString(content, {
-    width: CONTENT_WIDTH - 24,
-    align: "left"
-  }) + 58;
-
-  ensureSectionSpace(doc, estimatedHeight);
-
-  const sectionTop = doc.y;
+  const top = doc.y;
 
   doc
-    .roundedRect(PAGE_MARGIN, sectionTop, CONTENT_WIDTH, estimatedHeight, 10)
-    .fillAndStroke("#f8fbfe", "#d7e2ee");
+    .roundedRect(PAGE_MARGIN, top, CONTENT_WIDTH, headingHeight, 7)
+    .fillAndStroke("#f4eadf", "#ddc9af");
 
   doc
-    .fillColor("#1f4467")
+    .fillColor("#6f4e37")
     .font("Helvetica-Bold")
     .fontSize(12)
-    .text(title, PAGE_MARGIN + 14, sectionTop + 12, {
+    .text(title, PAGE_MARGIN + 14, top + 10, {
       width: CONTENT_WIDTH - 28
     });
 
-  doc
-    .fillColor("#1f2937")
-    .font(options.code ? "Courier" : "Helvetica")
-    .fontSize(options.code ? 9.5 : 11)
-    .text(content, PAGE_MARGIN + 14, sectionTop + 34, {
+  doc.y = top + headingHeight + 10;
+}
+
+function drawTextContent(doc, value) {
+  const content = normalizeText(value) || "N/A";
+
+  doc.font("Helvetica").fontSize(11).fillColor("#1f2937");
+
+  const paragraphs = content.split("\n");
+
+  for (const paragraph of paragraphs) {
+    const text = paragraph.trim();
+
+    if (!text) {
+      if (!hasSpace(doc, 12)) {
+        addNewPage(doc);
+      }
+
+      doc.moveDown(0.5);
+      continue;
+    }
+
+    const textHeight = doc.heightOfString(text, {
       width: CONTENT_WIDTH - 28,
-      align: "left"
+      lineGap: 3
     });
 
-  doc.y = sectionTop + estimatedHeight + 14;
+    if (
+      textHeight < doc.page.height - PAGE_MARGIN * 2 &&
+      !hasSpace(doc, textHeight + 8)
+    ) {
+      addNewPage(doc);
+    }
+
+    doc.text(text, PAGE_MARGIN + 14, doc.y, {
+      width: CONTENT_WIDTH - 28,
+      lineGap: 3
+    });
+
+    doc.moveDown(0.4);
+  }
+}
+
+function drawCodeContent(doc, value) {
+  const content = normalizeText(value) || "N/A";
+  const lines = content.split("\n");
+
+  doc.font("Courier").fontSize(8.5).fillColor("#111827");
+
+  for (const line of lines) {
+    const codeLine = line || " ";
+
+    const lineHeight = doc.heightOfString(codeLine, {
+      width: CONTENT_WIDTH - 28,
+      lineGap: 1
+    });
+
+    if (!hasSpace(doc, lineHeight + 12)) {
+      addNewPage(doc);
+    }
+
+    doc.text(codeLine, PAGE_MARGIN + 14, doc.y, {
+      width: CONTENT_WIDTH - 28,
+      lineGap: 1
+    });
+
+    doc.moveDown(0.15);
+  }
+}
+
+function drawSection(doc, title, value, options = {}) {
+  const minimumSpace = 60;
+
+  if (!hasSpace(doc, minimumSpace)) {
+    addNewPage(doc);
+  }
+
+  drawSectionHeading(doc, title);
+
+  if (options.code) {
+    drawCodeContent(doc, value);
+  } else {
+    drawTextContent(doc, value);
+  }
+
+  if (hasSpace(doc, 16)) {
+    doc.moveDown(0.8);
+  }
 }
 
 export function generateRecordPdf(data) {
@@ -124,7 +268,8 @@ export function generateRecordPdf(data) {
       bottom: PAGE_MARGIN,
       left: PAGE_MARGIN,
       right: PAGE_MARGIN
-    }
+    },
+    bufferPages: true
   });
 
   drawHeader(doc, data);

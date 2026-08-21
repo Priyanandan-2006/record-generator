@@ -1,9 +1,10 @@
 :root {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color: #10233f;
+  color: #2f241c;
   background:
-    radial-gradient(circle at top, rgba(78, 121, 167, 0.22), transparent 34%),
-    linear-gradient(135deg, #f4f7fb 0%, #dbe7f4 100%);
+    radial-gradient(circle at top left, rgba(197, 138, 64, 0.24), transparent 32%),
+    radial-gradient(circle at top right, rgba(126, 78, 52, 0.18), transparent 28%),
+    linear-gradient(140deg, #fff7ed 0%, #f4e4d2 52%, #ead6c3 100%);
   line-height: 1.5;
   font-weight: 400;
 }
@@ -43,7 +44,7 @@ textarea {
   font-size: 0.8rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #456b93;
+  color: #9f5c2d;
   font-weight: 700;
 }
 
@@ -56,7 +57,7 @@ textarea {
 .hero-text {
   margin-top: 16px;
   max-width: 620px;
-  color: #39516f;
+  color: #6a4d38;
   font-size: 1.02rem;
 }
 
@@ -68,10 +69,10 @@ textarea {
 }
 
 .panel {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(124, 152, 183, 0.25);
+  background: rgba(255, 250, 244, 0.88);
+  border: 1px solid rgba(184, 141, 102, 0.22);
   border-radius: 24px;
-  box-shadow: 0 18px 50px rgba(37, 61, 92, 0.12);
+  box-shadow: 0 22px 55px rgba(121, 85, 52, 0.14);
   backdrop-filter: blur(12px);
 }
 
@@ -91,7 +92,7 @@ textarea {
 
 .panel-heading p {
   margin: 6px 0 0;
-  color: #5c7089;
+  color: #7a6150;
 }
 
 .form-grid {
@@ -118,19 +119,19 @@ textarea {
 .field input,
 .field textarea {
   width: 100%;
-  border: 1px solid #c7d4e2;
+  border: 1px solid #dcc6b0;
   border-radius: 16px;
   padding: 13px 14px;
-  background: #fbfdff;
-  color: #10233f;
+  background: rgba(255, 252, 248, 0.95);
+  color: #2f241c;
   outline: none;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .field input:focus,
 .field textarea:focus {
-  border-color: #4b79a7;
-  box-shadow: 0 0 0 4px rgba(75, 121, 167, 0.12);
+  border-color: #b96d37;
+  box-shadow: 0 0 0 4px rgba(185, 109, 55, 0.14);
 }
 
 .field textarea {
@@ -160,8 +161,9 @@ textarea {
 }
 
 .primary-button {
-  background: linear-gradient(135deg, #1d4f80 0%, #4b79a7 100%);
+  background: linear-gradient(135deg, #a8552f 0%, #d08a4d 100%);
   color: #ffffff;
+  box-shadow: 0 12px 24px rgba(168, 85, 47, 0.22);
 }
 
 .primary-button:disabled {
@@ -170,8 +172,8 @@ textarea {
 }
 
 .secondary-button {
-  background: #e7eef6;
-  color: #224567;
+  background: #f3e5d7;
+  color: #6a4d38;
 }
 
 .error-banner {
@@ -186,11 +188,11 @@ textarea {
 .preview-sheet {
   width: 100%;
   min-height: 1122px;
-  background: #ffffff;
-  border: 1px solid #d9e2ec;
+  background: #fffdf9;
+  border: 1px solid #e1cfbc;
   border-radius: 18px;
   padding: 38px 34px;
-  box-shadow: inset 0 0 0 1px rgba(74, 111, 148, 0.05);
+  box-shadow: inset 0 0 0 1px rgba(155, 112, 73, 0.06);
 }
 
 .preview-topline {
@@ -198,7 +200,7 @@ textarea {
   justify-content: space-between;
   gap: 16px;
   padding-bottom: 18px;
-  border-bottom: 2px solid #d7e0ea;
+  border-bottom: 2px solid #dfcfbf;
 }
 
 .preview-label {
@@ -206,7 +208,7 @@ textarea {
   font-size: 0.82rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #607792;
+  color: #9a6945;
   font-weight: 700;
 }
 
@@ -225,7 +227,7 @@ textarea {
 
 .preview-section p:last-child {
   margin: 0;
-  color: #24384f;
+  color: #4b382b;
 }
 
 @media (max-width: 1100px) {

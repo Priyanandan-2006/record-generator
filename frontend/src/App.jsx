@@ -13,7 +13,23 @@ const initialForm = {
   result: ""
 };
 
-const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
+const apiBaseUrl = import.meta.env.VITE_API_URL || "";
+
+function getExportConfig(format) {
+  if (format === "word") {
+    return {
+      endpoint: "generate-word",
+      extension: "doc",
+      label: "Word"
+    };
+  }
+
+  return {
+    endpoint: "generate-pdf",
+    extension: "pdf",
+    label: "PDF"
+  };
+}
 
 export default function App() {
   const [formData, setFormData] = useState(initialForm);
@@ -33,12 +49,13 @@ export default function App() {
     setError("");
   };
 
-  const handleGeneratePdf = async () => {
+  const handleGenerateDocument = async (format) => {
     setIsGenerating(true);
     setError("");
 
     try {
-      const response = await fetch(`${apiBaseUrl}/api/generate-pdf`, {
+      const exportConfig = getExportConfig(format);
+      const response = await fetch(`${apiBaseUrl}/api/${exportConfig.endpoint}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -48,15 +65,15 @@ export default function App() {
 
       if (!response.ok) {
         const data = await response.json().catch(() => ({}));
-        throw new Error(data.message || "Failed to generate PDF.");
+        throw new Error(data.message || `Failed to generate ${exportConfig.label}.`);
       }
 
-      const pdfBlob = await response.blob();
-      const fileUrl = URL.createObjectURL(pdfBlob);
+      const fileBlob = await response.blob();
+      const fileUrl = URL.createObjectURL(fileBlob);
       const link = document.createElement("a");
 
       link.href = fileUrl;
-      link.download = `experiment-${formData.experimentNumber || "record"}.pdf`;
+      link.download = `experiment-${formData.experimentNumber || "record"}.${exportConfig.extension}`;
       document.body.appendChild(link);
       link.click();
       link.remove();
@@ -72,12 +89,8 @@ export default function App() {
     <div className="app-shell">
       <header className="hero">
         <div className="hero-copy">
-          <p className="eyebrow">Lab Record PDF Generator</p>
-          <h1>Build polished experiment records in a single click.</h1>
-          <p className="hero-text">
-            Fill out the experiment details, preview the structure live, and
-            export a professional A4 PDF from the Node.js backend.
-          </p>
+          <p className="eyebrow">Recordify</p>
+          <h1>Build polished experiment records with Recordify.</h1>
         </div>
       </header>
 
@@ -87,7 +100,7 @@ export default function App() {
           isGenerating={isGenerating}
           error={error}
           onChange={handleChange}
-          onGenerate={handleGeneratePdf}
+          onGenerate={handleGenerateDocument}
           onReset={handleReset}
         />
         <RecordPreview formData={formData} />

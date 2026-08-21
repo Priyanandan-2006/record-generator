@@ -9,6 +9,11 @@ const fields = [
   { name: "result", label: "Result", type: "textarea" }
 ];
 
+const exportOptions = [
+  { value: "pdf", label: "Generate PDF" },
+  { value: "word", label: "Generate Word" }
+];
+
 export default function RecordForm({
   formData,
   isGenerating,
@@ -21,13 +26,12 @@ export default function RecordForm({
     <section className="panel form-panel">
       <div className="panel-heading">
         <h2>Experiment Details</h2>
-        <p>Every field is included in the exported A4 PDF.</p>
       </div>
 
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          onGenerate();
+          onGenerate("pdf");
         }}
       >
         <div className="form-grid">
@@ -62,9 +66,19 @@ export default function RecordForm({
         {error ? <p className="error-banner">{error}</p> : null}
 
         <div className="button-row">
-          <button type="submit" className="primary-button" disabled={isGenerating}>
-            {isGenerating ? "Generating PDF..." : "Generate PDF"}
-          </button>
+          {exportOptions.map((option) => (
+            <button
+              key={option.value}
+              type={option.value === "pdf" ? "submit" : "button"}
+              className="primary-button"
+              disabled={isGenerating}
+              onClick={
+                option.value === "pdf" ? undefined : () => onGenerate(option.value)
+              }
+            >
+              {isGenerating ? "Generating..." : option.label}
+            </button>
+          ))}
           <button type="button" className="secondary-button" onClick={onReset}>
             Reset
           </button>

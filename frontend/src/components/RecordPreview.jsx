@@ -6,6 +6,21 @@ const sections = [
   { title: "Result", key: "result" }
 ];
 
+function formatDisplayDate(dateValue) {
+  if (!dateValue) {
+    return "DD/MM/YYYY";
+  }
+
+  const match = dateValue.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+
+  if (!match) {
+    return dateValue;
+  }
+
+  const [, year, month, day] = match;
+  return `${day}/${month}/${year}`;
+}
+
 export default function RecordPreview({ formData }) {
   return (
     <section className="panel preview-panel">
@@ -18,7 +33,7 @@ export default function RecordPreview({ formData }) {
         <div className="preview-topline">
           <div>
             <p className="preview-label">Date</p>
-            <p>{formData.date || "YYYY-MM-DD"}</p>
+            <p>{formatDisplayDate(formData.date)}</p>
           </div>
           <div>
             <p className="preview-label">Experiment No.</p>

@@ -1,19 +1,201 @@
-X [ERROR] Cannot read directory "../../../..": Access is denied.
+6:27:04 am [vite] Internal server error: C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\src\App.jsx: Expected corresponding JSX closing tag for <div>. (94:10)
 
-X [ERROR] Could not resolve "C:\\Users\\KiTE\\OneDrive\\Desktop\\record generator\\frontend\\vite.config.js"
+  92 |           <p className="eyebrow">Lab Record PDF Generator</p>
+  93 |           <h1>Build polished experiment records in a single click.</h1>
+> 94 |           </p>
+     |           ^
+  95 |         </div>
+  96 |       </header>
+  97 |
+  Plugin: vite:react-babel
+  File: C:/Users/KiTE/OneDrive/Desktop/record generator/frontend/src/App.jsx:94:10
+  92 |            <p className="eyebrow">Lab Record PDF Generator</p>
+  93 |            <h1>Build polished experiment records in a single click.</h1>
+  94 |            </p>
+     |            ^
+  95 |          </div>
+  96 |        </header>
+      at constructor (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:369:19)
+      at JSXParserMixin.raise (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:6620:19)
+      at JSXParserMixin.jsxParseElementAt (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:4743:16)
+      at JSXParserMixin.jsxParseElementAt (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:4714:32)
+      at JSXParserMixin.jsxParseElementAt (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:4714:32)
+      at JSXParserMixin.jsxParseElement (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:4765:17)
+      at JSXParserMixin.parseExprAtom (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:4775:19)
+      at JSXParserMixin.parseExprSubscripts (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:11102:23)
+      at JSXParserMixin.parseUpdate (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:11087:21)
+      at JSXParserMixin.parseMaybeUnary (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:11067:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10920:61)
+      at JSXParserMixin.parseExprOps (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10925:23)
+      at JSXParserMixin.parseMaybeConditional (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10902:23)
+      at JSXParserMixin.parseMaybeAssign (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10852:21)
+      at C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10821:39
+      at JSXParserMixin.allowInAnd (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12455:12)
+      at JSXParserMixin.parseMaybeAssignAllowIn (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10821:17)
+      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12522:17)
+      at JSXParserMixin.parseParenAndDistinguishExpression (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:11701:28)
+      at JSXParserMixin.parseExprAtom (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:11357:23)
+      at JSXParserMixin.parseExprAtom (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:4780:20)
+      at JSXParserMixin.parseExprSubscripts (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:11102:23)
+      at JSXParserMixin.parseUpdate (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:11087:21)
+      at JSXParserMixin.parseMaybeUnary (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:11067:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10920:61)
+      at JSXParserMixin.parseExprOps (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10925:23)
+      at JSXParserMixin.parseMaybeConditional (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10902:23)
+      at JSXParserMixin.parseMaybeAssign (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10852:21)
+      at JSXParserMixin.parseExpressionBase (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10805:23)
+      at C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10801:39
+      at JSXParserMixin.allowInAnd (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12450:16)
+      at JSXParserMixin.parseExpression (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10801:17)
+      at JSXParserMixin.parseReturnStatement (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:13171:28)
+      at JSXParserMixin.parseStatementContent (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12827:21)
+      at JSXParserMixin.parseStatementLike (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12796:17)
+      at JSXParserMixin.parseStatementListItem (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12776:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:13345:61)
+      at JSXParserMixin.parseBlockBody (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:13338:10)
+      at JSXParserMixin.parseBlock (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:13326:10)
+      at JSXParserMixin.parseFunctionBody (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12129:24)
+      at JSXParserMixin.parseFunctionBodyAndFinish (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12115:10)
+      at C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:13474:12
+      at JSXParserMixin.withSmartMixTopicForbiddingContext (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12432:14)
+      at JSXParserMixin.parseFunction (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:13473:10)
+      at JSXParserMixin.parseExportDefaultExpression (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:13936:19)
+      at JSXParserMixin.parseExport (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:13857:25)
+      at JSXParserMixin.parseStatementContent (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12907:27)
+      at JSXParserMixin.parseStatementLike (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12796:17)
+      at JSXParserMixin.parseModuleItem (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12773:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:13345:36)
+6:27:04 am [vite] Internal server error: C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\src\App.jsx: Expected corresponding JSX closing tag for <div>. (94:10)
 
-[31mfailed to load config from C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\vite.config.js[39m
-[31merror when starting dev server:
-Error: Build failed with 2 errors:
-error: Cannot read directory "../../../..": Access is denied.
-error: Could not resolve "C:\\Users\\KiTE\\OneDrive\\Desktop\\record generator\\frontend\\vite.config.js"
-    at failureErrorWithLog (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\esbuild\lib\main.js:1472:15)
-    at C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\esbuild\lib\main.js:945:25
-    at runOnEndCallbacks (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\esbuild\lib\main.js:1315:45)
-    at buildResponseToResult (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\esbuild\lib\main.js:943:7)
-    at C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\esbuild\lib\main.js:970:16
-    at responseCallbacks.<computed> (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\esbuild\lib\main.js:622:9)
-    at handleIncomingPacket (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\esbuild\lib\main.js:677:12)
-    at Socket.readFromStdout (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\esbuild\lib\main.js:600:7)
-    at Socket.emit (node:events:508:28)
-    at addChunk (node:internal/streams/readable:563:12)[39m
+  92 |           <p className="eyebrow">Lab Record PDF Generator</p>
+  93 |           <h1>Build polished experiment records in a single click.</h1>
+> 94 |           </p>
+     |           ^
+  95 |         </div>
+  96 |       </header>
+  97 |
+  Plugin: vite:react-babel
+  File: C:/Users/KiTE/OneDrive/Desktop/record generator/frontend/src/App.jsx:94:10
+  92 |            <p className="eyebrow">Lab Record PDF Generator</p>
+  93 |            <h1>Build polished experiment records in a single click.</h1>
+  94 |            </p>
+     |            ^
+  95 |          </div>
+  96 |        </header>
+      at constructor (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:369:19)
+      at JSXParserMixin.raise (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:6620:19)
+      at JSXParserMixin.jsxParseElementAt (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:4743:16)
+      at JSXParserMixin.jsxParseElementAt (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:4714:32)
+      at JSXParserMixin.jsxParseElementAt (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:4714:32)
+      at JSXParserMixin.jsxParseElement (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:4765:17)
+      at JSXParserMixin.parseExprAtom (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:4775:19)
+      at JSXParserMixin.parseExprSubscripts (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:11102:23)
+      at JSXParserMixin.parseUpdate (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:11087:21)
+      at JSXParserMixin.parseMaybeUnary (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:11067:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10920:61)
+      at JSXParserMixin.parseExprOps (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10925:23)
+      at JSXParserMixin.parseMaybeConditional (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10902:23)
+      at JSXParserMixin.parseMaybeAssign (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10852:21)
+      at C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10821:39
+      at JSXParserMixin.allowInAnd (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12455:12)
+      at JSXParserMixin.parseMaybeAssignAllowIn (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10821:17)
+      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12522:17)
+      at JSXParserMixin.parseParenAndDistinguishExpression (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:11701:28)
+      at JSXParserMixin.parseExprAtom (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:11357:23)
+      at JSXParserMixin.parseExprAtom (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:4780:20)
+      at JSXParserMixin.parseExprSubscripts (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:11102:23)
+      at JSXParserMixin.parseUpdate (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:11087:21)
+      at JSXParserMixin.parseMaybeUnary (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:11067:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10920:61)
+      at JSXParserMixin.parseExprOps (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10925:23)
+      at JSXParserMixin.parseMaybeConditional (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10902:23)
+      at JSXParserMixin.parseMaybeAssign (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10852:21)
+      at JSXParserMixin.parseExpressionBase (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10805:23)
+      at C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10801:39
+      at JSXParserMixin.allowInAnd (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12450:16)
+      at JSXParserMixin.parseExpression (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10801:17)
+      at JSXParserMixin.parseReturnStatement (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:13171:28)
+      at JSXParserMixin.parseStatementContent (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12827:21)
+      at JSXParserMixin.parseStatementLike (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12796:17)
+      at JSXParserMixin.parseStatementListItem (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12776:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:13345:61)
+      at JSXParserMixin.parseBlockBody (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:13338:10)
+      at JSXParserMixin.parseBlock (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:13326:10)
+      at JSXParserMixin.parseFunctionBody (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12129:24)
+      at JSXParserMixin.parseFunctionBodyAndFinish (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12115:10)
+      at C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:13474:12
+      at JSXParserMixin.withSmartMixTopicForbiddingContext (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12432:14)
+      at JSXParserMixin.parseFunction (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:13473:10)
+      at JSXParserMixin.parseExportDefaultExpression (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:13936:19)
+      at JSXParserMixin.parseExport (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:13857:25)
+      at JSXParserMixin.parseStatementContent (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12907:27)
+      at JSXParserMixin.parseStatementLike (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12796:17)
+      at JSXParserMixin.parseModuleItem (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12773:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:13345:36)
+6:27:07 am [vite] Internal server error: C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\src\App.jsx: Expected corresponding JSX closing tag for <div>. (94:10)
+
+  92 |           <p className="eyebrow">Lab Record PDF Generator</p>
+  93 |           <h1>Build polished experiment records in a single click.</h1>
+> 94 |           </p>
+     |           ^
+  95 |         </div>
+  96 |       </header>
+  97 |
+  Plugin: vite:react-babel
+  File: C:/Users/KiTE/OneDrive/Desktop/record generator/frontend/src/App.jsx:94:10
+  92 |            <p className="eyebrow">Lab Record PDF Generator</p>
+  93 |            <h1>Build polished experiment records in a single click.</h1>
+  94 |            </p>
+     |            ^
+  95 |          </div>
+  96 |        </header>
+      at constructor (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:369:19)
+      at JSXParserMixin.raise (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:6620:19)
+      at JSXParserMixin.jsxParseElementAt (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:4743:16)
+      at JSXParserMixin.jsxParseElementAt (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:4714:32)
+      at JSXParserMixin.jsxParseElementAt (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:4714:32)
+      at JSXParserMixin.jsxParseElement (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:4765:17)
+      at JSXParserMixin.parseExprAtom (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:4775:19)
+      at JSXParserMixin.parseExprSubscripts (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:11102:23)
+      at JSXParserMixin.parseUpdate (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:11087:21)
+      at JSXParserMixin.parseMaybeUnary (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:11067:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10920:61)
+      at JSXParserMixin.parseExprOps (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10925:23)
+      at JSXParserMixin.parseMaybeConditional (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10902:23)
+      at JSXParserMixin.parseMaybeAssign (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10852:21)
+      at C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10821:39
+      at JSXParserMixin.allowInAnd (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12455:12)
+      at JSXParserMixin.parseMaybeAssignAllowIn (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10821:17)
+      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12522:17)
+      at JSXParserMixin.parseParenAndDistinguishExpression (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:11701:28)
+      at JSXParserMixin.parseExprAtom (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:11357:23)
+      at JSXParserMixin.parseExprAtom (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:4780:20)
+      at JSXParserMixin.parseExprSubscripts (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:11102:23)
+      at JSXParserMixin.parseUpdate (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:11087:21)
+      at JSXParserMixin.parseMaybeUnary (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:11067:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10920:61)
+      at JSXParserMixin.parseExprOps (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10925:23)
+      at JSXParserMixin.parseMaybeConditional (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10902:23)
+      at JSXParserMixin.parseMaybeAssign (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10852:21)
+      at JSXParserMixin.parseExpressionBase (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10805:23)
+      at C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10801:39
+      at JSXParserMixin.allowInAnd (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12450:16)
+      at JSXParserMixin.parseExpression (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:10801:17)
+      at JSXParserMixin.parseReturnStatement (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:13171:28)
+      at JSXParserMixin.parseStatementContent (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12827:21)
+      at JSXParserMixin.parseStatementLike (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12796:17)
+      at JSXParserMixin.parseStatementListItem (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12776:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:13345:61)
+      at JSXParserMixin.parseBlockBody (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:13338:10)
+      at JSXParserMixin.parseBlock (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:13326:10)
+      at JSXParserMixin.parseFunctionBody (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12129:24)
+      at JSXParserMixin.parseFunctionBodyAndFinish (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12115:10)
+      at C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:13474:12
+      at JSXParserMixin.withSmartMixTopicForbiddingContext (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12432:14)
+      at JSXParserMixin.parseFunction (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:13473:10)
+      at JSXParserMixin.parseExportDefaultExpression (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:13936:19)
+      at JSXParserMixin.parseExport (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:13857:25)
+      at JSXParserMixin.parseStatementContent (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12907:27)
+      at JSXParserMixin.parseStatementLike (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12796:17)
+      at JSXParserMixin.parseModuleItem (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:12773:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (C:\Users\KiTE\OneDrive\Desktop\record generator\frontend\node_modules\@babel\parser\lib\index.js:13345:36)

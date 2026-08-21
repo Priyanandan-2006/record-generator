@@ -1,4 +1,21 @@
 
 > record-generator-frontend@1.0.0 dev
-> vite --host 127.0.0.1
+> vite
 
+
+  VITE v5.4.21  ready in 1488 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+6:08:17 am [vite] hmr update /src/App.jsx
+6:08:19 am [vite] hmr update /src/components/RecordForm.jsx
+6:08:22 am [vite] hmr update /src/components/RecordPreview.jsx
+6:24:56 am [vite] hmr update /src/components/RecordForm.jsx
+6:24:57 am [vite] hmr update /src/styles.css
+6:27:04 am [vite] hmr update /src/App.jsx
+6:27:17 am [vite] hmr update /src/App.jsx
+6:28:42 am [vite] hmr update /src/App.jsx
+6:29:26 am [vite] hmr update /src/App.jsx
+6:29:47 am [vite] hmr update /src/App.jsx
+6:32:46 am [vite] hmr update /src/App.jsx
+6:32:49 am [vite] page reload index.html
