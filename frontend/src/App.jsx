@@ -1,6 +1,7 @@
 import { useState } from "react";
 import RecordForm from "./components/RecordForm";
 import RecordPreview from "./components/RecordPreview";
+import recordifyMark from "./assets/recordify-mark.svg";
 
 const initialForm = {
   date: new Date().toISOString().slice(0, 10),
@@ -89,7 +90,10 @@ export default function App() {
     <div className="app-shell">
       <header className="hero">
         <div className="hero-copy">
-          <p className="eyebrow">Recordify</p>
+          <div className="brand-row">
+            <img className="brand-mark" src={recordifyMark} alt="Recordify logo" />
+            <p className="eyebrow">Recordify</p>
+          </div>
           <h1>Build polished experiment records with Recordify.</h1>
         </div>
       </header>
