@@ -97,7 +97,7 @@ export default function App() {
       <main className="content-grid">
         <RecordForm
           formData={formData}
-          isGenerating={isGenerating}
+          isGenerating={isGenerating}t5s
           error={error}
           onChange={handleChange}
           onGenerate={handleGenerateDocument}

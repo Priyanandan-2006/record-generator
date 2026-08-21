@@ -141,6 +141,10 @@ textarea {
 .code-field,
 .preview-code {
   font-family: "Courier New", Courier, monospace;
+}
+
+.preview-copy,
+.preview-code {
   white-space: pre-wrap;
 }
 
