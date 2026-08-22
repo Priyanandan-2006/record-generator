@@ -20,7 +20,7 @@ function getExportConfig(format) {
   if (format === "word") {
     return {
       endpoint: "generate-word",
-      extension: "doc",
+      extension: "docx",
       label: "Word"
     };
   }
@@ -65,8 +65,14 @@ export default function App() {
       });
 
       if (!response.ok) {
-        const data = await response.json().catch(() => ({}));
-        throw new Error(data.message || `Failed to generate ${exportConfig.label}.`);
+        const contentType = response.headers.get("content-type") || "";
+        const data = contentType.includes("application/json")
+          ? await response.json().catch(() => ({}))
+          : { message: await response.text().catch(() => "") };
+
+        throw new Error(
+          data.message || `Failed to generate ${exportConfig.label}.`
+        );
       }
 
       const fileBlob = await response.blob();

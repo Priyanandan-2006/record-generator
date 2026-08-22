@@ -1,142 +1,201 @@
+import {
+  AlignmentType,
+  BorderStyle,
+  Document,
+  Packer,
+  Paragraph,
+  Table,
+  TableCell,
+  TableLayoutType,
+  TableRow,
+  TextRun,
+  WidthType
+} from "docx";
 import { formatDisplayDate, normalizeText } from "../utils/recordData.js";
 
-function escapeHtml(value) {
-  return String(value)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;");
+function createLabel(text) {
+  return new Paragraph({
+    spacing: {
+      after: 80
+    },
+    children: [
+      new TextRun({
+        text,
+        bold: true,
+        size: 20
+      })
+    ]
+  });
 }
 
-function renderTextBlock(value, preserveWhitespace = false) {
-  const content = escapeHtml(normalizeText(value) || "N/A").replaceAll(
-    /\r?\n/g,
-    "<br/>"
-  );
-
-  if (preserveWhitespace) {
-    return `<p class="section-copy code-block">${content}</p>`;
-  }
-
-  return `<p class="section-copy">${content}</p>`;
+function createValue(text) {
+  return new Paragraph({
+    spacing: {
+      after: 40
+    },
+    children: [
+      new TextRun({
+        text: normalizeText(text) || "N/A",
+        size: 22
+      })
+    ]
+  });
 }
 
-export function generateRecordWordDocument(data) {
-  const html = `<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Experiment Record</title>
-    <style>
-      @page {
-        size: A4;
-        margin: 20mm;
+function createMultilineParagraph(text, preserveWhitespace = false) {
+  const lines = (normalizeText(text) || "N/A").split(/\r?\n/);
+
+  return new Paragraph({
+    spacing: {
+      after: 160,
+      line: 360
+    },
+    children: lines.flatMap((line, index) => {
+      const run = new TextRun({
+        text: line || " ",
+        size: 22,
+        font: preserveWhitespace ? "Courier New" : "Arial"
+      });
+
+      if (index === lines.length - 1) {
+        return [run];
       }
 
-      body {
-        font-family: Arial, sans-serif;
-        color: #1f2937;
-        line-height: 1.5;
+      return [run, new TextRun({ break: 1 })];
+    })
+  });
+}
+
+function createSection(title, text, preserveWhitespace = false) {
+  return [
+    new Paragraph({
+      spacing: {
+        before: 240,
+        after: 120
+      },
+      border: {
+        top: {
+          color: "DDC9AF",
+          style: BorderStyle.SINGLE,
+          size: 6
+        },
+        bottom: {
+          color: "DDC9AF",
+          style: BorderStyle.SINGLE,
+          size: 6
+        },
+        left: {
+          color: "DDC9AF",
+          style: BorderStyle.SINGLE,
+          size: 6
+        },
+        right: {
+          color: "DDC9AF",
+          style: BorderStyle.SINGLE,
+          size: 6
+        }
+      },
+      shading: {
+        fill: "F4EADF"
+      },
+      children: [
+        new TextRun({
+          text: title,
+          bold: true,
+          color: "6F4E37",
+          size: 24
+        })
+      ]
+    }),
+    createMultilineParagraph(text, preserveWhitespace)
+  ];
+}
+
+export async function generateRecordWordDocument(data) {
+  const document = new Document({
+    sections: [
+      {
+        properties: {},
+        children: [
+          new Paragraph({
+            alignment: AlignmentType.CENTER,
+            spacing: {
+              after: 180
+            },
+            children: [
+              new TextRun({
+                text: "Experiment Record",
+                bold: true,
+                color: "17324D",
+                size: 32
+              })
+            ]
+          }),
+          new Paragraph({
+            border: {
+              bottom: {
+                color: "CDB89D",
+                style: BorderStyle.SINGLE,
+                size: 6
+              }
+            },
+            spacing: {
+              after: 280
+            }
+          }),
+          new Table({
+            width: {
+              size: 100,
+              type: WidthType.PERCENTAGE
+            },
+            layout: TableLayoutType.FIXED,
+            rows: [
+              new TableRow({
+                children: [
+                  new TableCell({
+                    width: {
+                      size: 50,
+                      type: WidthType.PERCENTAGE
+                    },
+                    children: [
+                      createLabel("Date"),
+                      createValue(formatDisplayDate(data.date))
+                    ]
+                  }),
+                  new TableCell({
+                    width: {
+                      size: 50,
+                      type: WidthType.PERCENTAGE
+                    },
+                    children: [
+                      createLabel("Experiment Number"),
+                      createValue(data.experimentNumber)
+                    ]
+                  })
+                ]
+              }),
+              new TableRow({
+                children: [
+                  new TableCell({
+                    columnSpan: 2,
+                    children: [
+                      createLabel("Title"),
+                      createValue(data.title)
+                    ]
+                  })
+                ]
+              })
+            ]
+          }),
+          ...createSection("Aim", data.aim),
+          ...createSection("Algorithm", data.algorithm),
+          ...createSection("Code", data.code, true),
+          ...createSection("Output", data.output),
+          ...createSection("Result", data.result)
+        ]
       }
+    ]
+  });
 
-      h1 {
-        margin: 0 0 12px;
-        text-align: center;
-        color: #17324d;
-        font-size: 24px;
-      }
-
-      .divider {
-        border: 0;
-        border-top: 1px solid #cdb89d;
-        margin: 0 0 18px;
-      }
-
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 20px;
-      }
-
-      td {
-        border: 1px solid #cdb89d;
-        padding: 10px 12px;
-        vertical-align: top;
-      }
-
-      .label {
-        font-size: 11px;
-        font-weight: 700;
-        color: #6f5b43;
-        text-transform: uppercase;
-        margin-bottom: 6px;
-      }
-
-      .value {
-        font-size: 12px;
-      }
-
-      .section-title {
-        background: #f4eadf;
-        border: 1px solid #ddc9af;
-        border-radius: 6px;
-        color: #6f4e37;
-        font-size: 14px;
-        font-weight: 700;
-        margin: 16px 0 10px;
-        padding: 9px 12px;
-      }
-
-      .section-copy {
-        margin: 0 0 8px;
-        font-size: 12px;
-      }
-
-      .code-block {
-        font-family: "Courier New", monospace;
-        white-space: pre-wrap;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Experiment Record</h1>
-    <hr class="divider" />
-
-    <table>
-      <tr>
-        <td style="width: 50%;">
-          <div class="label">Date</div>
-          <div class="value">${escapeHtml(formatDisplayDate(data.date))}</div>
-        </td>
-        <td>
-          <div class="label">Experiment Number</div>
-          <div class="value">${escapeHtml(normalizeText(data.experimentNumber) || "N/A")}</div>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2">
-          <div class="label">Title</div>
-          <div class="value">${escapeHtml(normalizeText(data.title) || "N/A")}</div>
-        </td>
-      </tr>
-    </table>
-
-    <div class="section-title">Aim</div>
-    ${renderTextBlock(data.aim)}
-
-    <div class="section-title">Algorithm</div>
-    ${renderTextBlock(data.algorithm)}
-
-    <div class="section-title">Code</div>
-    ${renderTextBlock(data.code, true)}
-
-    <div class="section-title">Output</div>
-    ${renderTextBlock(data.output)}
-
-    <div class="section-title">Result</div>
-    ${renderTextBlock(data.result)}
-  </body>
-</html>`;
-
-  return Buffer.from(`\ufeff${html}`, "utf8");
+  return Packer.toBuffer(document);
 }

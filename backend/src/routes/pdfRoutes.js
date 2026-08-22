@@ -24,7 +24,7 @@ router.post("/generate-pdf", (req, res) => {
   pdfStream.end();
 });
 
-router.post("/generate-word", (req, res) => {
+router.post("/generate-word", async (req, res) => {
   const missingFields = getMissingFields(req.body);
 
   if (missingFields.length > 0) {
@@ -33,13 +33,22 @@ router.post("/generate-word", (req, res) => {
     });
   }
 
-  const fileName = `experiment-${normalizeText(req.body.experimentNumber)}.doc`;
-  const wordBuffer = generateRecordWordDocument(req.body);
+  try {
+    const fileName = `experiment-${normalizeText(req.body.experimentNumber)}.docx`;
+    const wordBuffer = await generateRecordWordDocument(req.body);
 
-  res.setHeader("Content-Type", "application/msword; charset=utf-8");
-  res.setHeader("Content-Disposition", `attachment; filename="${fileName}"`);
+    res.setHeader(
+      "Content-Type",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    );
+    res.setHeader("Content-Disposition", `attachment; filename="${fileName}"`);
 
-  res.send(wordBuffer);
+    res.send(wordBuffer);
+  } catch (error) {
+    res.status(500).json({
+      message: error instanceof Error ? error.message : "Failed to generate Word."
+    });
+  }
 });
 
 export default router;
