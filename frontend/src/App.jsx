@@ -6,7 +6,7 @@ import recordifyMark from "./assets/recordify-mark.svg";
 const initialForm = {
   date: new Date().toISOString().slice(0, 10),
   experimentNumber: "",
-  title: "",
+  title: " ",
   aim: "",
   algorithm: "",
   code: "",
