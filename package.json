@@ -1,6 +1,10 @@
 {
   "name": "record-generator",
   "private": true,
+  "dependencies": {
+    "docx": "^9.7.1",
+    "pdfkit": "^0.15.0"
+  },
   "scripts": {
     "build": "npm run build --prefix frontend"
   }
