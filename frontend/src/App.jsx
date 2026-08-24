@@ -16,6 +16,23 @@ const initialForm = {
 
 const apiBaseUrl = import.meta.env.VITE_API_URL || "";
 
+function getErrorMessage(responseText, fallbackMessage) {
+  const normalizedText = responseText.trim();
+
+  if (!normalizedText) {
+    return fallbackMessage;
+  }
+
+  if (
+    normalizedText.includes("NOT_FOUND") ||
+    normalizedText.includes("The page could not be found")
+  ) {
+    return "The document service is not available right now. Redeploy the app so the /api routes are published, then try again.";
+  }
+
+  return normalizedText;
+}
+
 function getExportConfig(format) {
   if (format === "word") {
     return {
@@ -68,7 +85,12 @@ export default function App() {
         const contentType = response.headers.get("content-type") || "";
         const data = contentType.includes("application/json")
           ? await response.json().catch(() => ({}))
-          : { message: await response.text().catch(() => "") };
+          : {
+              message: getErrorMessage(
+                await response.text().catch(() => ""),
+                `Failed to generate ${exportConfig.label}.`
+              )
+            };
 
         throw new Error(
           data.message || `Failed to generate ${exportConfig.label}.`
